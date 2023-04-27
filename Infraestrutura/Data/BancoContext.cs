@@ -1,7 +1,7 @@
 using Microsoft.EntityFrameworkCore;
 using Newtonsoft.Json.Linq;
 using SistemaCadastroEleitoral.Models.Admin;
-using SistemaCadastroEleitoral.Models.Cadastros;
+using SistemaCadastroEleitoral.Models.Cadastro;
 using SistemaCadastroEleitoral.Models.Contato;
 using SistemaCadastroEleitoral.Models.Endereco;
 using SistemaCadastroEleitoral.Models.Observacao;

@@ -1,7 +1,7 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using SistemaCadastroEleitoral.Models.Admin;
-using SistemaCadastroEleitoral.Models.Cadastros;
+using SistemaCadastroEleitoral.Models.Cadastro;
 
 namespace SistemaCadastroEleitoral.Models.Observacao
 {

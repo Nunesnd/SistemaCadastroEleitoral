@@ -6,7 +6,7 @@ using SistemaCadastroEleitoral.Models.Endereco;
 using SistemaCadastroEleitoral.Models.Observacao;
 using SistemaCadastroEleitoral.Models.Profissao;
 
-namespace SistemaCadastroEleitoral.Models.Cadastros
+namespace SistemaCadastroEleitoral.Models.Cadastro
 {
     public class CadastroModel
     {

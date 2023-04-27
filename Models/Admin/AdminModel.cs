@@ -1,6 +1,6 @@
 
 using System.ComponentModel.DataAnnotations;
-using SistemaCadastroEleitoral.Models.Cadastros;
+using SistemaCadastroEleitoral.Models.Cadastro;
 
 namespace SistemaCadastroEleitoral.Models.Admin
 {
