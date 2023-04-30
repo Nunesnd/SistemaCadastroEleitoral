@@ -1,0 +1,39 @@
+﻿@{
+    Layout="_LayoutLogin";
+    @*ViewData["Title"] = "Home Page";*@
+}
+
+<div class="text-center">
+     <h1 class="display-4">Seja bem vindo - Faça seu Login </h1>
+
+    <div class="wrapper fadeInDown">
+        <div id="formContent">
+        <!-- Tabs Titles -->
+
+        <!-- Icon -->
+            <div class="fadeIn first">
+                <img src="https://4.bp.blogspot.com/-2lyNfF39Kl0/VYWQIPvUPAI/AAAAAAAAB4A/L3mfGIzRe0Q/s1600/h3.jpg" id="icon" alt="User Icon" />
+            </div>
+
+        <!-- Login Form -->
+            <form action="/login/logar" method="post">
+                <input type="text" id="login" class="fadeIn second" name="login" placeholder="Digite seu login">
+                <input type="password" id="senha" class="fadeIn third" name="senha" placeholder="Informe sua senha">
+
+                @if(!string.IsNullOrEmpty(ViewBag.erro))
+                {
+                    <div class="alert alert-danger" style="margin: 5px" role="alert">
+                        @ViewBag.erro
+                    </div>
+                }
+                <input type="submit" class="fadeIn fourth" value="Entrar">
+            </form>
+
+        <!-- Remind Passowrd -->
+            <div id="formFooter">
+                <a class="underlineHover" href="#">Forgot Password?</a>
+            </div>
+
+        </div>
+    </div>
+</div>

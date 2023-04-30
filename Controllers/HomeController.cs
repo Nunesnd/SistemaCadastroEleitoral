@@ -1,6 +1,16 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using SistemaCadastroEleitoral.Models;
+using Microsoft.AspNetCore.Http;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.Extensions.Logging;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Authorization;
+
+
 
 namespace SistemaCadastroEleitoral.Controllers;
 
@@ -18,9 +28,10 @@ public class HomeController : Controller
         return View();
     }
 
-    public IActionResult Privacy()
+    public IActionResult Sair()
     {
-        return View();
+        this.HttpContext.Response.Cookies.Delete("adm_sis");
+        return Redirect("/login");
     }
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

@@ -11,6 +11,7 @@ namespace SistemaCadastroEleitoral.Infraestrutura.Autenticacao
                 filterContext.HttpContext.Response.Redirect("/login");
                 return;
             }
+            
             base.OnActionExecuting(filterContext);
         }
     }
