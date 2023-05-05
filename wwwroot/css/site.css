@@ -98,8 +98,14 @@ h2.active {
 
 /* FORM TYPOGRAPHY*/
 
+label {
+  padding-left: 15px;
+}
+
+
+
 input[type=button], input[type=submit], input[type=reset]  {
-  background-color: #56baed;
+  background-color: #1001e7;
   border: none;
   color: white;
   padding: 15px 80px;
@@ -120,8 +126,24 @@ input[type=button], input[type=submit], input[type=reset]  {
   transition: all 0.3s ease-in-out;
 }
 
+input[type=submit]{
+  background-color: rgb(0, 0, 255);
+}
+
+input[value=Delete], input[value=Excluir]{
+  background-color: rgb(255, 0, 0);
+}
+
+input[value=Delete]:focus, input[value=Excluir]:focus{
+  background-color: orange;
+}
+
+input[value=Delete]:hover, input[value=Excluir]:hover, input[type=submit]:hover{
+  background-color: orange;
+}
+
 input[type=button]:hover, input[type=submit]:hover, input[type=reset]:hover  {
-  background-color: #39ace7;
+  background-color: #324eeb;
 }
 
 input[type=button]:active, input[type=submit]:active, input[type=reset]:active  {
@@ -133,13 +155,12 @@ input[type=button]:active, input[type=submit]:active, input[type=reset]:active  
 }
 
 input[type=text],input[type=password] {
-  background-color: #f6f6f6;
+  background-color: #e4e4e4;
   border: none;
   color: #0d0d0d;
-  padding: 15px 32px;
-  text-align: center;
+  padding: 8px 27px;
+  text-align: left;
   text-decoration: none;
-  display: inline-block;
   font-size: 16px;
   margin: 5px;
   width: 85%;

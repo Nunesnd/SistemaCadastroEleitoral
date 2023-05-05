@@ -23,7 +23,8 @@ public class AdminModel
         public string Senha { get; set; }
 
         [Required]
-        public string Fone { get; set; }        
+        public string Fone { get; set; }   
+             
         public virtual List<CadastroModel> Cadastros { get; set; }
         public string Acesso { get{ return "Admin";} }// caso houver erro nesta linha tentar outras opções de retunr
 

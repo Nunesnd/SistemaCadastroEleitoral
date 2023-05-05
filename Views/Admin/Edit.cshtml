@@ -4,48 +4,47 @@
     ViewData["Title"] = "Edit";
 }
 
-<h1>Edit</h1>
+<h1>Edição</h1>
 
-<h4>AdminModel</h4>
+
 <hr />
-<div class="row">
-    <div class="col-md-4">
+    <div class="col-md-12">
         <form asp-action="Edit">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
-            <div class="form-group">
-                <label asp-for="NomeAdmin" class="control-label"></label>
+            <div class="form-group col-md-4">
+                <label asp-for="NomeAdmin" class="control-label">Nome completo</label>
                 <input asp-for="NomeAdmin" class="form-control" />
                 <span asp-validation-for="NomeAdmin" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-4">
                 <label asp-for="Login" class="control-label"></label>
                 <input asp-for="Login" class="form-control" />
                 <span asp-validation-for="Login" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-4">
                 <label asp-for="CPF" class="control-label"></label>
                 <input asp-for="CPF" class="form-control" />
                 <span asp-validation-for="CPF" class="text-danger"></span>
             </div>
-            <div class="form-group">
+            <div class="form-group col-md-4">
                 <label asp-for="Senha" class="control-label"></label>
                 <input asp-for="Senha" class="form-control" />
                 <span asp-validation-for="Senha" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Fone" class="control-label"></label>
+            <div class="form-group col-md-4">
+                <label asp-for="Fone" class="control-label">Telefone</label>
                 <input asp-for="Fone" class="form-control" />
                 <span asp-validation-for="Fone" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+            <div class="form-group d-flex justify-content-center">
+                <input type="submit" value="Salvar" class="btn btn-primary  col-md-5" />
             </div>
         </form>
     </div>
-</div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
+
+<div class="d-flex justify-content-center">
+    <a role="button" class="btn btn-secondary  col-md-5" asp-action="Index">Voltar</a>
 </div>
 
