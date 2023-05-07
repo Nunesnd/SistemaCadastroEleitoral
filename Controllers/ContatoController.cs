@@ -51,8 +51,8 @@ namespace SistemaCadastroEleitoral.Controllers
         public IActionResult Create(int cadastroId)
         //public IActionResult Create()
         {
-            ViewBag.CadastroId = cadastroId;
-            ViewData["cadastroId"] = new SelectList(_context.Cadastros, "Id", "Nome");
+            ViewData["CadastroId"] = cadastroId;
+            ViewData["cadastroId"] = new SelectList(_context.Cadastros, "Id", "Nome", cadastroId);
             return View();
         }
 
@@ -67,7 +67,8 @@ namespace SistemaCadastroEleitoral.Controllers
             {
                 _context.Add(contatoModel);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create", "Endereco", new { cadastroId = contatoModel.cadastroId, contatoId = contatoModel.IdContato });
             }
             ViewData["cadastroId"] = new SelectList(_context.Cadastros, "Id", "Nome", contatoModel.cadastroId);
             return View(contatoModel);

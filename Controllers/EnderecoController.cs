@@ -48,9 +48,11 @@ namespace SistemaCadastroEleitoral.Controllers
         }
 
         // GET: Endereco/Create
-        public IActionResult Create()
+        public IActionResult Create(int cadastroId)
         {
-            ViewData["cadastroId"] = new SelectList(_context.Cadastros, "Id", "Nome");
+            ViewData["CadastroId"] = cadastroId;
+            ViewData["cadastroId"] = new SelectList(_context.Cadastros, "Id", "Nome", cadastroId);
+            //ViewData["cadastroId"] = new SelectList(_context.Cadastros, "Id", "Nome");
             return View();
         }
 
