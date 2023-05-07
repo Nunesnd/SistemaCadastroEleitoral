@@ -67,7 +67,9 @@ namespace SistemaCadastroEleitoral.Controllers
             {
                 _context.Add(enderecoModel);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create", "Observacao", new { cadastroId = enderecoModel.cadastroId, enderecoId = enderecoModel.Id });
+    
             }
             ViewData["cadastroId"] = new SelectList(_context.Cadastros, "Id", "Nome", enderecoModel.cadastroId);
             return View(enderecoModel);

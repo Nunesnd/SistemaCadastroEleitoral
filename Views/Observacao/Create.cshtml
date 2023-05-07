@@ -23,8 +23,7 @@
                 <span asp-validation-for="Data" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="cadastroId" class="control-label"></label>
-                <select asp-for="cadastroId" class ="form-control" asp-items="ViewBag.cadastroId"></select>
+                @Html.HiddenFor(m => m.cadastroId)
             </div>
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
