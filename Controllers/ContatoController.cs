@@ -48,8 +48,10 @@ namespace SistemaCadastroEleitoral.Controllers
         }
 
         // GET: Contato/Create
-        public IActionResult Create()
+        public IActionResult Create(int cadastroId)
+        //public IActionResult Create()
         {
+            ViewBag.CadastroId = cadastroId;
             ViewData["cadastroId"] = new SelectList(_context.Cadastros, "Id", "Nome");
             return View();
         }

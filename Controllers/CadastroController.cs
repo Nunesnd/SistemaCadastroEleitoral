@@ -68,7 +68,8 @@ namespace SistemaCadastroEleitoral.Controllers
             {
                 _context.Add(cadastroModel);
                 await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                //return RedirectToAction(nameof(Index));
+                return RedirectToAction("Create", "Contato", new { cadastroId = cadastroModel.Id });
             }
             ViewData["AdminId"] = new SelectList(_context.Admins, "Id", "CPF", cadastroModel.AdminId);
             return View(cadastroModel);
