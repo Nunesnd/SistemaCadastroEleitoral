@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using SistemaCadastroEleitoral.Models;
+using SistemaCadastroEleitoral.Infraestrutura.Autenticacao;
 using Microsoft.AspNetCore.Http;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,7 @@ public class HomeController : Controller
         _logger = logger;
     }
 
+    [Logado]
     public IActionResult Index()
     {
         return View();

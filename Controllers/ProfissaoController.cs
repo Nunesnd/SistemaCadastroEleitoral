@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SistemaCadastroEleitoral.Infraestrutura.Data;
+using SistemaCadastroEleitoral.Infraestrutura.Autenticacao;
 using SistemaCadastroEleitoral.Models.Profissao;
 
 namespace SistemaCadastroEleitoral.Controllers
@@ -20,6 +21,7 @@ namespace SistemaCadastroEleitoral.Controllers
         }
 
         // GET: Profissao
+        [Logado]
         public async Task<IActionResult> Index()
         {
             var bancoContext = _context.Profissoes.Include(p => p.Cadastro);

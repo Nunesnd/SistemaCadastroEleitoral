@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using SistemaCadastroEleitoral.Infraestrutura.Autenticacao;
 using Microsoft.EntityFrameworkCore;
 using SistemaCadastroEleitoral.Infraestrutura.Data;
 using SistemaCadastroEleitoral.Models.Admin;
@@ -20,6 +21,7 @@ namespace SistemaCadastroEleitoral.Controllers
         }
 
         // GET: Admin
+        [Logado]
         public async Task<IActionResult> Index()
         {
               return View(await _context.Admins.ToListAsync());

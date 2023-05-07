@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using SistemaCadastroEleitoral.Infraestrutura.Autenticacao;
 using SistemaCadastroEleitoral.Infraestrutura.Data;
 using SistemaCadastroEleitoral.Models.Cadastro;
 
@@ -19,7 +20,8 @@ namespace SistemaCadastroEleitoral.Controllers
             _context = context;
         }
 
-        // GET: Cadastro
+        // GET: Cadastro        
+        [Logado]
         public async Task<IActionResult> Index()
         {
             var bancoContext = _context.Cadastros.Include(c => c.Admin);
@@ -48,7 +50,10 @@ namespace SistemaCadastroEleitoral.Controllers
         // GET: Cadastro/Create
         public IActionResult Create()
         {
-            ViewData["AdminId"] = new SelectList(_context.Admins, "Id", "CPF");
+            int adminId = Convert.ToInt32(HttpContext.Request.Cookies["adm_sis"]);
+            ViewBag.AdminId = adminId;
+
+            //ViewData["AdminId"] = new SelectList(_context.Admins, "Id", "CPF");
             return View();
         }
 
