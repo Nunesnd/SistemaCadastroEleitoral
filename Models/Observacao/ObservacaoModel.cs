@@ -13,7 +13,13 @@ namespace SistemaCadastroEleitoral.Models.Observacao
 
         public string Conteudo { get; set; }
 
-        public string Data { get; set; }
+        public DateTime DataObservacao { get; set; }
+
+        public ObservacaoModel()
+        {
+            DataObservacao = DateTime.Now;
+        }
+
 
         [ForeignKey("Cadastro")]
         public int cadastroId { get; set; }

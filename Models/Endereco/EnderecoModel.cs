@@ -23,7 +23,7 @@ namespace SistemaCadastroEleitoral.Models.Endereco
 
         public string UF { get; set; }
 
-        public int CEP { get; set; }
+        public int CEP { get; set; } 
 
         [ForeignKey("Cadastro")]
         public int cadastroId { get; set; }

@@ -1,6 +1,7 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using SistemaCadastroEleitoral.Models;
+using SistemaCadastroEleitoral.Infraestrutura.Data;
 using SistemaCadastroEleitoral.Infraestrutura.Autenticacao;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -17,17 +18,36 @@ namespace SistemaCadastroEleitoral.Controllers;
 
 public class HomeController : Controller
 {
-    private readonly ILogger<HomeController> _logger;
+    
+    private readonly BancoContext _context;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(BancoContext context)
     {
-        _logger = logger;
+        _context = context;
     }
 
     [Logado]
     public IActionResult Index()
     {
+        string adminName = GetAdminName();
+        ViewBag.AdminName = adminName;
         return View();
+    }
+
+    private string GetAdminName()
+    {
+        int adminId;
+        bool isAdminIdPresent = int.TryParse(HttpContext.Request.Cookies["adm_sis"], out adminId);
+        if (isAdminIdPresent)
+        {
+            //var admin = _context.Admins.FirstOrDefault(a => a.Id == adminId);
+            var admin = _context.Admins.FirstOrDefault(a => a.Id == adminId);
+            if (admin != null)
+            {
+                return admin.NomeAdmin;
+            }
+        }
+        return null;
     }
 
     public IActionResult Sair()
