@@ -1,4 +1,7 @@
+using Microsoft.AspNetCore.Mvc.ViewFeatures;
 using System;
+using System.Collections;
+using System.Collections.Specialized;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -8,6 +11,8 @@ using Microsoft.EntityFrameworkCore;
 using SistemaCadastroEleitoral.Infraestrutura.Data;
 using SistemaCadastroEleitoral.Infraestrutura.Autenticacao;
 using SistemaCadastroEleitoral.Models.Contato;
+using SistemaCadastroEleitoral.Enum.TipoLink;
+using SistemaCadastroEleitoral.Enum;
 
 namespace SistemaCadastroEleitoral.Controllers
 {
@@ -49,12 +54,14 @@ namespace SistemaCadastroEleitoral.Controllers
 
         // GET: Contato/Create
         public IActionResult Create(int cadastroId)
-        //public IActionResult Create()
         {
             ViewData["CadastroId"] = cadastroId;
             ViewData["cadastroId"] = new SelectList(_context.Cadastros, "Id", "Nome", cadastroId);
+            
             return View();
         }
+
+        
 
         // POST: Contato/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -63,16 +70,34 @@ namespace SistemaCadastroEleitoral.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("IdContato,NomeContato,LinkContato,cadastroId")] ContatoModel contatoModel)
         {
+            ModelState.Clear(); // Limpar valores preenchidos anteriormente
+
             if (ModelState.IsValid)
             {
                 _context.Add(contatoModel);
                 await _context.SaveChangesAsync();
+                
+                var contatos = _context.Contatos.Where(c => c.cadastroId == contatoModel.cadastroId).ToList();
+                ModelState.Clear();
+                ViewData["contatos"] = contatos;
+                return View(new ContatoModel { cadastroId = contatoModel.cadastroId });
+    
+                //return RedirectToAction("Create", new { cadastroId = contatoModel.cadastroId });
+    
                 //return RedirectToAction(nameof(Index));
-                return RedirectToAction("Create", "Endereco", new { cadastroId = contatoModel.cadastroId, contatoId = contatoModel.IdContato });
+                //return RedirectToAction("Create", "Endereco", new { cadastroId = contatoModel.cadastroId, contatoId = contatoModel.IdContato });
             }
             ViewData["cadastroId"] = new SelectList(_context.Cadastros, "Id", "Nome", contatoModel.cadastroId);
             return View(contatoModel);
         }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public IActionResult Proximo([Bind("IdContato,NomeContato,LinkContato,cadastroId")] ContatoModel contatoModel)
+        {
+            return RedirectToAction("Create", "Endereco", new { cadastroId = contatoModel.cadastroId, contatoId = contatoModel.IdContato });
+        }
+
 
         // GET: Contato/Edit/5
         public async Task<IActionResult> Edit(int? id)

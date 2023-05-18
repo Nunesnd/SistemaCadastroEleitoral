@@ -17,6 +17,21 @@ body {
   margin-bottom: 60px;
 }
 
+/*CONFIGURAÇÃO DE LARGURA DE CAMPOS*/
+
+.ladoAlado{
+  display: flex;
+}
+
+.campo_largEsq{
+  width: 450px;
+}
+
+.campo_largDir{
+  width: 450px;
+}
+
+
 /* Início configuração tela login segue até a linha 278*/
 
 /* BASIC */

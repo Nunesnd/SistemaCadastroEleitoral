@@ -1,4 +1,5 @@
 @model SistemaCadastroEleitoral.Models.Contato.ContatoModel
+@using SistemaCadastroEleitoral.Models.Contato
 
 @{
     ViewData["Title"] = "Create";
@@ -8,31 +9,64 @@
 
 <h4>ContatoModel</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="NomeContato" class="control-label"></label>
-                <input asp-for="NomeContato" class="form-control" />
-                <span asp-validation-for="NomeContato" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="LinkContato" class="control-label"></label>
-                <input asp-for="LinkContato" class="form-control" />
-                <span asp-validation-for="LinkContato" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-              
-                @Html.HiddenFor(m => m.cadastroId)
 
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+<div class="ladoAlado">
+    <div class="row col-md-12">
+        <div class="col-md-5 campo_largEsq">
+        
+            <form asp-action="Create">
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+                <div class="form-group">
+                    <label asp-for="NomeContato" class="control-label"></label>
+                    <input asp-for="NomeContato" class="form-control" />
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="LinkContato" class="control-label"></label>
+                    <input asp-for="LinkContato" class="form-control" />
+                    <span asp-validation-for="LinkContato" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    @Html.HiddenFor(m => m.cadastroId)
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Adicionar" class="btn btn-primary" />
+                </div>
+
+            </form>        
+
+        </div>
+
+        <div class="col-md-5 campo_largDir">
+            @if (ViewData["contatos"] != null)
+            {
+                <table class="table">
+                    @foreach (var contato in (List<ContatoModel>)ViewData["contatos"])
+                    {
+                        <tr>
+                            <td>
+                                @contato.NomeContato
+                            </td>
+                            <td>
+                                @contato.LinkContato
+                            </td>
+                        </tr>
+                    }
+                </table>
+            }
+        </div>
+
     </div>
 </div>
+
+<div>
+    <a asp-action="Proximo" class="btn btn-primary" >Endereço</a>
+</div>
+
 
 <div>
     <a asp-action="Index">Back to List</a>
